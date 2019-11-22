@@ -1,0 +1,47 @@
+<div class="tile" (mousedown)="!departure.active ? activate(): undefined"
+	[class.active]="departure.active" [class.limited]="departure.month == 1 && departure.index == 0">
+	<div class="w-100">
+		<div innerAlign="spaceBetween top">
+			<div innerAlign="left middle" class="mat-headline">
+				{{departure.begin | date:'EEE dd'}}
+				<i class="material-icons">keyboard_arrow_right</i>
+				{{!departure.endsNextMonth ? (departure.end | date:'EEE dd') : (departure.end | date:'EEE dd LLL') }}
+			</div>
+
+			<i *ngIf="!departure.active" class="material-icons md-36 tile-info">info</i>
+			<i (mousedown)="deactivate()" *ngIf="departure.active" class="material-icons md-36 info">cancel</i>
+
+		</div>
+    <span *ngIf="departure.month == 1 && departure.index == 0" class="limited-text">*Limited Availability*</span>
+		<div class="tile-line pt-1 pb-1" innerAlign="left middle">
+			<span *ngIf="departure.promotions.length == 0" class="no-promotions">No Promotions Available</span>
+			<div class="promos" [class.active]="departure.active">
+				<div class="w-100 promo-title" *ngIf="departure.promotions.length > 0">Available Promotions</div>
+				<span *ngFor="let promo of departure.promotions; let i = index;" class="promo mr-1" innerAlign="left middle">
+          <i *ngIf="departure.active" matTooltip="Applies to Categories: C, C+, D, D+ E " class="material-icons">info_outline</i>
+          <span class="mat-body-2">{{promo.label}}</span></span>
+			</div>
+		</div>
+	</div>
+
+
+	<span class="mat-title">
+  From {{departure.price | currency}} AUD pp
+  </span>
+
+	<button (mousedown)="nextStep(matStepperNext)" class="select-button w-100 mt-1" matStepperNext [class.active]="departure.active"  mat-flat-button>Select Departure
+    <i class="material-icons">navigate_next</i>
+    </button>
+
+</div>
+
+
+
+
+<!--
+
+        <span  *ngIf="departure.promotions.length == 0" class="mat-body-1 pr-1">No Promotions Available</span>
+			<ng-marquee *ngIf="departure.promotions.length > 0" #marquee [class.active]="mark.offsetWidth > 300 && departure.active">
+				<mark><div #mark><span *ngFor="let promo of departure.promotions; let i = index;" class="mat-body-1 pr-1">{{promo.label}}</span></div></mark>
+			</ng-marquee>
+ -->

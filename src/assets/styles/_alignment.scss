@@ -1,0 +1,51 @@
+      /* extend stupid flexbox syntax nobody remembers to top middle bottom left center right for example <column innerAlign="left"> */
+      /*Horizontal Content Alignment*/
+
+      [innerAlign] {
+
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+        
+
+      &[innerAlign*="left"] {
+         justify-content: flex-start;
+      }
+
+      &[innerAlign*="center"] {
+         justify-content: center;
+      }
+
+      &[innerAlign*="right"] {
+          justify-content: flex-end;
+      }
+
+      &[innerAlign*="distributeH"] {
+           justify-content: space-around;
+      }
+
+      &[innerAlign*="spaceBetween"] {
+         justify-content: space-between;
+      }
+
+      /*Vertical Content Alignment*/
+      &[innerAlign*="top"] {
+       align-items: start;
+      }
+
+      &[innerAlign*="middle"] {
+        align-items: center;
+      }
+
+      &[innerAlign*="bottom"] {
+        align-items: end;
+      }
+
+      &[innerAlign*="stretchV"] {
+        align-items: stretch;
+      }
+      }

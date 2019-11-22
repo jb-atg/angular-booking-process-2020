@@ -1,0 +1,14 @@
+:host() {
+  .form-section {
+    min-height:200px;
+      padding: 1rem 1rem 2rem 1rem;
+        form {
+    display: grid; 
+grid-template-columns: repeat(3, minmax(200px, 1fr)); 
+grid-template-rows: 1fr; 
+grid-column-gap: 16px;
+grid-row-gap: 16px; 
+  }
+  }
+
+}

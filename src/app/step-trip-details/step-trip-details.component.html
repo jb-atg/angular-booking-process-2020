@@ -1,0 +1,27 @@
+<div class="scroll-content">
+	<div class="scroll-content-inner">
+
+		<div class="bedding" innerAlign="middle left">
+			<div class="mr-1">
+				<div class="mat-display-1">Bedding</div>
+				<div class="mat-body-1">Select a bedding type</div>
+			</div>
+
+			<mat-button-toggle-group name="bedding" aria-label="Font Style" [(ngModel)]="bedding">
+				<mat-button-toggle value="single"><i class="material-icons">single_bed</i>Single</mat-button-toggle>
+				<mat-button-toggle value="twin">
+					<i class="material-icons">single_bed</i><i class="material-icons">single_bed</i>Twin
+				</mat-button-toggle>
+				<mat-button-toggle class="mat-button-toggle-checked active" checked value="double">
+					<i class="material-icons">king_bed</i>Double</mat-button-toggle>
+			</mat-button-toggle-group>
+		</div>
+
+		<app-promotion-selection (hasAddOn)="hasAddOn($event)"></app-promotion-selection>
+		<app-add-on-selection [class.active]="addOn"></app-add-on-selection>
+
+
+
+		<app-cabin-selection></app-cabin-selection>
+	</div>
+</div>

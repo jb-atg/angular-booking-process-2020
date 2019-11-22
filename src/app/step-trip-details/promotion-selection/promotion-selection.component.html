@@ -1,0 +1,26 @@
+<div class="mat-display-1">Promotions</div>
+<div class="mat-body-1">Select a promotion below</div>
+
+<drag-scroll [drag-scroll-y-disabled]="true" [snap-disabled]="true" scrollbar-hidden="true" class="no-select">
+	<ng-container *ngFor="let promo of promotions; let even = even; let i = index;">
+		<div class="promo" drag-scroll-item>
+			<div class="tile" (mousedown)="activatePromo(i)" [class.active]="promo.active">
+				<div innerAlign="spaceBetween top" class="w-100">
+					<div>
+						<span class="mat-headline">{{promo.label}}</span>
+            <div class="subheading-2">Applies to Cabin Categories: C, C+, D, D+ E </div>
+					</div>
+
+					<i *ngIf="!promo.active" class="material-icons md-36">check_box_outline_blank</i>
+					<i *ngIf="promo.active" class="material-icons md-36">check_box</i>
+				</div>
+
+				<span class="promo-description">
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </span>
+					<div class="w-100 promo-title" innerAlign="left middle"><u>Terms &amp; Conditions</u></div>
+			</div>
+
+		</div>
+	</ng-container>
+</drag-scroll>

@@ -1,0 +1,138 @@
+:host() {
+display:flex!important;
+align-items:center;
+align-content:center;
+height:100%;
+padding:1rem;
+position:relative;
+
+.tile {
+  min-width:300px;
+  max-width:300px;
+  padding:.5rem;
+  min-height: 142px;
+  border-radius:.5rem;
+  background:#fff;
+  overflow:hidden;
+display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    align-content: start;
+
+  &.active {
+     max-width:320px;
+     background: var(--primary-color);
+    overflow:hidden;
+      transition: all .4s cubic-bezier(.25,.8,.25,1);
+
+span,i,div {
+:not(button) {
+color:#fff!important;
+}
+
+&.mat-title {
+  color:#fff!important;
+}
+}
+
+  }
+
+  &.limited:not(.active) {
+  background: #bcc3fd;
+
+  .limited-text {
+    color:var(--warn-color);
+  }
+}
+
+
+
+
+.tile-info {
+  opacity:0;
+     transition: all .4s cubic-bezier(.25,.8,.25,1);
+}
+
+
+&:hover .tile-info {
+  opacity:1;
+     transition: all .4s cubic-bezier(.25,.8,.25,1);
+}
+
+
+}
+.promos {
+ width:100%;
+ white-space: wrap;
+ .promo {
+   display:flex;
+ }
+
+ &.active .promo > i {
+       color: var(--accent-color)!important;
+      margin-right:.25rem;
+ }
+}
+
+.promos:not(.active) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100% - 1rem);
+
+
+   .promo {
+   display:inline;
+  background: var(--accent-color);
+    padding: .25rem .5rem;
+    border-radius: 100px;
+ }
+}
+
+
+.material-icons.md-18 {
+font-size:18px;
+margin-right:.25rem;
+display:inline;
+}
+
+.tile-line {
+  flex-wrap:nowrap;
+
+}
+
+  [ng-reflect-selected="false"] {
+    background:transparent!important;
+  }
+
+
+  .no-promotions {
+opacity: 0.4;
+  }
+
+.promo-title {
+  padding-bottom:.25rem;
+}
+
+
+.select-button:not(.active) {
+position:absolute;
+max-height:0;
+overflow:hidden;
+margin:0;
+padding:0;
+pointer-events:none;
+opacity:0;
+transition: all .4s cubic-bezier(.25,.8,.25,1);
+}
+
+
+ :host-context(app-departure-month.departure-selected)  .tile:not(.active) {
+opacity:0.6;
+transition: all .4s cubic-bezier(.25,.8,.25,1);
+  }
+
+
+
+}

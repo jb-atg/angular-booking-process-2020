@@ -1,0 +1,116 @@
+
+@import './assets/styles/fonts';
+@import '~saturn-datepicker/bundle.css';
+@import './assets/styles/apt-theme';
+@import './assets/styles/alignment';
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+body {
+  margin:0;
+  display:flex;
+  justify-content:center;
+    @extend .mat-body-1;
+
+  iframe {
+    width: calc(100vw - 4px);
+    height:100vw;
+    position:relative;
+  }
+
+    .material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+}
+
+app-component {
+
+    &::-webkit-scrollbar {
+    display: none;
+}
+
+.drag-scroll-content {
+    &::-webkit-scrollbar {
+    display: none;
+}
+}
+
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.w-100 {
+  width:100%;
+}
+
+.p-1 {
+  padding:1rem;
+}
+
+.pl-1 {
+padding-left:1rem;
+}
+
+.pr-1 {
+padding-right:1rem;
+}
+
+.pt-1 {
+padding-top:1rem;
+}
+
+.pb-1 {
+padding-bottom:1rem;
+}
+
+.m-1 {
+margin:1rem;
+}
+
+.ml-1 {
+margin-left:1rem;
+}
+
+.mr-1 {
+margin-right:1rem;
+}
+
+.mt-1 {
+margin-top:1rem;
+}
+
+.mb-1 {
+margin-bottom:1rem;
+}
+
+}
+

@@ -1,0 +1,30 @@
+<div innerAlign="left middle" class="w-100">
+	<div>
+		<div class="mat-display-1">Cabin Category</div>
+		<div class="mat-body-1">Select a cabin category below</div>
+	</div>
+	<button (click)="openCabinDialog()" mat-flat-button color="primary" class="ml-1"><i class="material-icons">directions_boat</i>View Cabins</button>
+</div>
+
+
+<drag-scroll [drag-scroll-y-disabled]="true" [snap-disabled]="true" scrollbar-hidden="true" class="no-select">
+	<ng-container *ngFor="let cabin of cabins; let even = even; let i = index;">
+		<div class="promo" drag-scroll-item>
+			<div class="tile" (mousedown)="activateCabin(i)" [class.active]="cabin.active">
+				<div innerAlign="spaceBetween top" class="w-100">
+					<div>
+						<span class="mat-headline">Cabin Category {{cabin.label}}</span>
+					</div>
+
+					<i *ngIf="!cabin.active" class="material-icons md-36">check_box_outline_blank</i>
+					<i *ngIf="cabin.active" class="material-icons md-36">check_box</i>
+				</div>
+
+				<span class="promo-description">
+         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </span>
+			</div>
+
+		</div>
+	</ng-container>
+</drag-scroll>

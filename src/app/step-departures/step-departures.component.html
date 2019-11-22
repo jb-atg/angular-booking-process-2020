@@ -1,0 +1,93 @@
+<div class="scroll-content">
+	<div class=" filters mat-elevation-z2" innerAlign="spaceBetween middle">
+		<div innerAlign="center middle">
+			<button mat-stroked-button class="mr-1" (click)="openCabinDialog()">View Cabins</button>
+		</div>
+		<div class="pl-1 pr-1" innerAlign="left middle">
+			<div class="filter-icon" innerAlign="center middle" (click)="logFilters()">
+				<i class="material-icons">filter_list_alt</i>
+				<span class="mat-subheading-1 pr-1">Filters</span>
+			</div>
+
+
+			<mat-form-field appearance="outline" class="pr-1" [class.filled]="filters.dateRange"
+				(click)="range.opened? range.close() : range.open()">
+				<mat-label>Departure Date</mat-label>
+				<input matInput readonly [(ngModel)]="filters.dateRange"
+                   placeholder="Choose a date"
+                   [satDatepicker]="range">
+				<sat-datepicker #range [rangeMode]="true">
+				</sat-datepicker>
+				<span matSuffix><i class="material-icons">date_range</i></span>
+			</mat-form-field>
+
+			<div #beddingField>
+				<mat-form-field appearance="outline" class="pr-1" [class.filled]="filters.bedding.selectedOption"
+					[matMenuTriggerFor]="beddingMenu" (menuOpened)="menuOpened(beddingField)">
+					<mat-label>Bedding</mat-label>
+					<input matInput readonly="true" [value]="filters.bedding.beddingDisplayValue">
+					<span matSuffix><i class="material-icons">single_bed</i></span>
+				</mat-form-field>
+			</div>
+
+
+
+			<mat-menu #beddingMenu="matMenu">
+				<div *ngFor="let beddingOption of filters.bedding.options; let i = index;" mat-menu-item
+					(click)="menuItemClick($event,i)" innerAlign="spaceBetween middle" class="number-picker-menu-item"
+					[ngStyle]="{'width.px': menuWidth }">
+					<span class="number-picker-label">{{beddingOption.label}}</span>
+					<div innerAlign="spaceBetween middle">
+						<button mat-icon-button (click)="menuItemClick($event,i, 'decrement')">
+                <i class="material-icons">remove_circle_outline</i>
+            </button>
+						<input min:0 type="number" [(ngModel)]="beddingOption.quantity" (ngModelChange)="updateBeddingDisplayValue()">
+						<button min="0" max="10" mat-icon-button (click)="menuItemClick($event,i, 'increment')">
+                <i class="material-icons">add_circle_outline</i>
+            </button>
+					</div>
+				</div>
+			</mat-menu>
+
+
+			<mat-form-field appearance="outline" class="pr-1"
+				[class.filled]="filters.cabins.selectedOptions?.length > 0">
+				<mat-label>Cabin</mat-label>
+				<mat-select [(ngModel)]="filters.cabins.selectedOptions" multiple>
+					<mat-option *ngFor="let cabin of filters.cabins.options" [value]="cabin.value">
+						{{cabin.label}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline" class="pr-1"
+				[class.filled]="filters.promotions?.selectedOptions?.length > 0">
+				<mat-label>Promotions</mat-label>
+				<mat-select [(ngModel)]="filters.promotions.selectedOptions" multiple>
+					<mat-option *ngFor="let  promo of filters.promotions.options" [value]="promo.value">
+						{{promo.label}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+		</div>
+
+
+	</div>
+
+	<div class="info-bar" innerAlign="spaceBetween middle">
+		<div class="mat-title pl-1 pt-1 pb-1">Showing results for {{filters.bedding.totalPaxQuantity}} passengers
+			sharing {{filters.bedding.beddingDisplayValue}}</div>
+	</div>
+
+
+
+
+	<ng-container *ngFor="let month of months;let i = index; let even = even;" ;>
+		<app-departure-month [month]="month" [class.even]="even" (isActive)="setActive($event)"
+			[class.departure-selected]="departureSelected">
+			<span class="mat-display-1 pl-1 pr-1">{{month.label}}</span><br>
+			<span>2020</span>
+		</app-departure-month>
+	</ng-container>
+</div>

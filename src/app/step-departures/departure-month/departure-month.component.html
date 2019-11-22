@@ -1,0 +1,25 @@
+<div class="month-label" innerAlign="center middle">
+	<ng-content></ng-content>
+</div>
+
+	<app-carousel [items]="month.departures" [itemTemplate]="itemTemplate" [itemWidth]="348"  [itemMinHeight]="200">
+	<ng-template #itemTemplate let-item="item">
+			<app-departure-slot
+			[departure]="item" (isActive)="setActive($event)"></app-departure-slot>
+	</ng-template>
+  </app-carousel>
+
+<!-- <div class="drag-scroll-wrapper">
+	<drag-scroll #dragScroll  [drag-scroll-disabled]="mouseWheel" [drag-scroll-y-disabled]="true" [snap-disabled]="true" scrollbar-hidden="true"
+		(reachesLeftBound)="reachLeft($event)" (reachesRightBound)="reachRight($event)" class="no-select">
+		<app-departure-slot *ngFor="let dep of month.departures; let even = even; let i = index;" drag-scroll-item
+			[departure]="dep" (isActive)="setActive($event)"></app-departure-slot>
+	</drag-scroll>
+	<button *ngIf="!hasReachedLeft" class="move-left" mat-icon-button (click)="dragScroll.moveLeft()">
+  <i class="material-icons">chevron_left</i>
+  </button>
+
+	<button *ngIf="!hasReachedRight" class="move-right"  mat-icon-button (click)="dragScroll.moveRight()">
+  <i class="material-icons">chevron_right</i>
+  </button>
+</div> -->
