@@ -1,3 +1,14 @@
+<!-- <grid cols="xs:5" rows="3" gap="0.5">
+ 	<style>
+		:root{
+			--cols: brown;
+			--rows: brown;
+			--gap:;
+		}
+	</style> 
+</grid> -->
+ 
+
 <div class="cdk-overlay-backdrop cdk-overlay-dark-backdrop" [class.cdk-overlay-backdrop-showing]="!collapsed"></div>
 
 <div class="content">
@@ -22,24 +33,28 @@
 				<div *ngIf="!departureSelected" innerAlign="middle right">
 					<span class="mat-body-1">Complex Requirements? Need Assistance ? </span>
 					<button mat-button color="primary">
-                 Get in touch<i class="material-icons">local_phone</i>
-        </button>
+						Get in touch<i class="material-icons">local_phone</i>
+					</button>
 				</div>
 
 				<div *ngIf="departureSelected" innerAlign="middle right">
-					<button *ngIf="selectedStep > 0"  mat-button><i class="material-icons" (click)="previousStep()">navigate_before</i>Back</button>
+					<button *ngIf="selectedStep > 0" mat-button><i class="material-icons"
+							(click)="previousStep()">navigate_before</i>Back</button>
 					<button mat-button (click)="nextStep()" color="primary">
-                  {{selectedStep == 0? 'Select Departure':'Next'}} <i class="material-icons">navigate_next</i>
-                  </button>
+						{{selectedStep == 0? 'Select Departure':'Next'}} <i class="material-icons">navigate_next</i>
+					</button>
 				</div>
 			</div>
 		</ng-container>
 	</mat-toolbar>
 
 	<div *ngIf="!collapsed">
-		<button *ngIf="!minimised"  class="minimise-button" mat-button (click)="minimised = !minimised"><i class="material-icons">keyboard_arrow_up</i>View Tour</button>
-		<button *ngIf="minimised" class="minimise-button" mat-flat-button (click)="minimised = !minimised" color="primary"><i class="material-icons">keyboard_arrow_down</i>Back to Booking</button>
-		<button *ngIf="!minimised"  mat-flat-button class="cancel-button" color="warn" (click)="collapsed = !collapsed">Cancel Booking <i class="material-icons">close</i></button>
+		<button *ngIf="!minimised" class="minimise-button" mat-button (click)="minimised = !minimised"><i
+				class="material-icons">keyboard_arrow_up</i>View Tour</button>
+		<button *ngIf="minimised" class="minimise-button" mat-flat-button (click)="minimised = !minimised"
+			color="primary"><i class="material-icons">keyboard_arrow_down</i>Back to Booking</button>
+		<button *ngIf="!minimised" mat-flat-button class="cancel-button" color="warn"
+			(click)="collapsed = !collapsed">Cancel Booking <i class="material-icons">close</i></button>
 		<mat-horizontal-stepper [linear]="true" #stepper (selectionChange)="stepperChange($event)">
 			<mat-step>
 				<ng-template matStepLabel>
@@ -50,69 +65,39 @@
 			</mat-step>
 			<mat-step>
 				<ng-template matStepLabel>
-					<span  *ngIf="selectedStep != 1"  class="step-title">Trip Details</span>
-					<span  *ngIf="selectedStep == 1"  class="mat-headline">Trip Details</span>
+					<span *ngIf="selectedStep != 1" class="step-title">Trip Details</span>
+					<span *ngIf="selectedStep == 1" class="mat-headline">Trip Details</span>
 				</ng-template>
 				<app-step-trip-details></app-step-trip-details>
 			</mat-step>
 
 			<mat-step>
 				<ng-template matStepLabel>
-					<span  *ngIf="selectedStep != 2"  class="step-title">Booking Contact Details</span>
-					<span  *ngIf="selectedStep == 2"  class="mat-headline">Booking Contact Details</span>
+					<span *ngIf="selectedStep != 2" class="step-title">Booking Contact Details</span>
+					<span *ngIf="selectedStep == 2" class="mat-headline">Booking Contact Details</span>
 				</ng-template>
-			<app-step-passenger-details></app-step-passenger-details> 
+				<app-step-passenger-details></app-step-passenger-details>
 			</mat-step>
 		</mat-horizontal-stepper>
 	</div>
 </div>
 
+
 <!--
+  for linear
+  cols="xs:4,sm:3,md:1,lg:2,xl:3"
+  rows="xs:4,sm:3,md:1,lg:2,xl:3"
+  gap="xs:1, " .5 > 2
+  add breakpoint compomnent style tag for rest
+  <style>
+  .xs {
+  grid-template-rows: ;
+  grid-template-columns: ;
+  grid-template-areas: ;
+	 }
 
-		<mat-list>
-			<mat-list-item>
-				<form>
-					<mat-form-field>
-						<input matInput placeholder="Placeholder">
-      </mat-form-field>
-				</form>
-			</mat-list-item>
 
-			<mat-list-item>
-				<button mat-raised-button color="primary">Primary</button>
-			</mat-list-item>
 
-			<mat-list-item>
-				<button mat-button color="accent">Accent</button>
-			</mat-list-item>
 
-			<mat-list-item>
-				<button mat-icon-button><mat-icon>home</mat-icon></button>
-			</mat-list-item>
-
-			<mat-list-item>
-				<legend>Options:</legend>
-				<mat-list-item>
-					<mat-radio-button value="1">Option 1</mat-radio-button>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-radio-button value="2">Option 2</mat-radio-button>
-				</mat-list-item>
-			</mat-list-item>
-
-			<mat-list-item>
-				<mat-spinner [diameter]="36"></mat-spinner>
-			</mat-list-item>
-
-			<mat-list-item>
-				<mat-chip-list>
-					<mat-chip color="warn" selected>Chip</mat-chip>
-				</mat-chip-list>
-			</mat-list-item>
-
-			<mat-list-item>
-				<mat-slider></mat-slider>
-			</mat-list-item>
-		</mat-list>
-
--->
+	 
+	-->

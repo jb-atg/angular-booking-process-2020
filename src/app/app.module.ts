@@ -63,6 +63,8 @@ import { PassengerDetailsFormComponent } from './step-passenger-details/passenge
 import { CabinDialogComponent } from './step-departures/cabin-dialog/cabin-dialog.component';
 import { AssignBeddingDialogComponent } from './step-departures/assign-bedding-dialog/assign-bedding-dialog.component';
 import { CarouselComponent } from './shared/carousel/carousel.component';
+import { GridComponent } from './shared/grid/grid.component';
+import { StyleComponent } from './shared/style/style.component';
 
 
 @NgModule({
@@ -118,7 +120,7 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
     ScrollingModule
   ],
   entryComponents: [AppComponent,CabinDialogComponent, AssignBeddingDialogComponent ],
-  declarations: [AppComponent, StepDeparturesComponent, PromoBadgeComponent, DepartureMonthComponent, DepartureSlotComponent, StepTripDetailsComponent, PromotionSelectionComponent, CabinSelectionComponent, AddOnSelectionComponent, StepPassengerDetailsComponent, PassengerDetailsFormComponent, CabinDialogComponent, AssignBeddingDialogComponent, CarouselComponent],
+  declarations: [AppComponent, StepDeparturesComponent, PromoBadgeComponent, DepartureMonthComponent, DepartureSlotComponent, StepTripDetailsComponent, PromotionSelectionComponent, CabinSelectionComponent, AddOnSelectionComponent, StepPassengerDetailsComponent, PassengerDetailsFormComponent, CabinDialogComponent, AssignBeddingDialogComponent, CarouselComponent, GridComponent, StyleComponent],
   bootstrap: [AppComponent],
   providers: []
   
