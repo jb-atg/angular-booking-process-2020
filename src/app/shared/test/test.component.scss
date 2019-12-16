@@ -1,0 +1,10 @@
+:host() {
+    width: calc(100vw - 17px);
+    height: 100vh;
+    top:0;
+    left:0;
+    display:block;
+    background:#eee;
+    position:fixed;
+    z-index:9999;
+}

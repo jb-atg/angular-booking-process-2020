@@ -1,5 +1,13 @@
-:host(){
- --cols: attr(cols);
+:host() {
+    display: grid;
+    display: -ms-grid;
+    width: 100%;
+    height: 100%;
 
- 
+    &:not([cols]):not([rows]):not([gap]) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        -ms-grid-rows: 1fr;
+    }
 }

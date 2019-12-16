@@ -20,6 +20,10 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   staticRows: number;
   responsiveRows: object;
   
+  @Input('gap') gap: any;
+  staticGap: number;
+  responsiveGap: object;
+
   styleTag: Node;
 
 
@@ -30,9 +34,11 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   }
 
   ngOnChanges() {
+    console.log('changes');
     if (this.cols || this.rows) {
       this.getInputValue(this.cols, 'staticCols', 'responsiveCols');
       this.getInputValue(this.rows, 'staticRows', 'responsiveRows');
+      this.getInputValue(this.gap, 'staticGap', 'responsiveGap');
       this.createStylesheet();
     }
   }
@@ -45,8 +51,9 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   }
 
   getInputValue(value, variableName, repsonsiveVariableName) {
-    if (value.length == 1 || typeof value == 'number') {
-      this[variableName] = typeof value == 'string' ? parseInt(value, 10) : value;
+
+    if (value.length == 1 || typeof value == 'number' || value.includes(".")) {
+      this[variableName] = typeof value == 'string' ? Number(value) : value;
     } else if (value === Object(value)) {
       this[repsonsiveVariableName] = value;
     } else if (typeof value == 'string') {
@@ -60,24 +67,28 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
     let hostname = '[' + tag.attributes[0].name.replace("content", "host") + ']';
 
     let stylesheet = '';
-    if (this.staticCols || this.staticRows) {
+    if (this.staticCols || this.staticRows || this.staticGap) {
       let columns = this.staticCols ? ' 1fr '.repeat(this.staticCols) : null;
       let rows = this.staticRows ? ' 1fr '.repeat(this.staticRows) : null;
+      let gap = this.staticGap ? this.staticGap + 'rem': null;
       stylesheet =
         ` ${hostname} {
         ${columns ? 'grid-template-columns:' + columns + ';' + '-ms-grid-colums' + columns + ';' : ''}
         ${rows ? 'grid-template-rows:' + rows + ';' + '-ms-grid-rows' + rows + ';' : ''}
+        ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - '+ gap +');'  : ''}
           }`;
     }
-    if (this.responsiveCols || this.responsiveRows) {
+    if (this.responsiveCols || this.responsiveRows || this.responsiveGap) {
       this.breakpoints.forEach(bp => {
         let columns = this.responsiveCols ? ' 1fr '.repeat(this.responsiveCols[Object.keys(bp)[0]]) : null;
         let rows = this.responsiveRows ? ' 1fr '.repeat(this.responsiveRows[Object.keys(bp)[0]]) : null;
+        let gap = this.responsiveGap ? this.responsiveGap[Object.keys(bp)[0]]  + 'rem': null;
         stylesheet = stylesheet +
           `@media only screen and (${bp[Object.keys(bp)[0]]}){
               ${hostname} {
             ${columns ? 'grid-template-columns:' + columns + ';' + '-ms-grid-colums' + columns + ';' : ''}
             ${rows ? 'grid-template-rows:' + rows + ';' + '-ms-grid-rows' + rows + ';' : ''}
+            ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - '+ gap +');' : ''}
               }
           }`;
       });

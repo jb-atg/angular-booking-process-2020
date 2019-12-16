@@ -65,6 +65,9 @@ import { AssignBeddingDialogComponent } from './step-departures/assign-bedding-d
 import { CarouselComponent } from './shared/carousel/carousel.component';
 import { GridComponent } from './shared/grid/grid.component';
 import { StyleComponent } from './shared/style/style.component';
+import { TestComponent } from './shared/test/test.component';
+import { CellComponent } from './shared/grid/cell/cell.component';
+import { BreakpointDirective } from './shared/directives/breakpoint.directive';
 
 
 @NgModule({
@@ -120,7 +123,7 @@ import { StyleComponent } from './shared/style/style.component';
     ScrollingModule
   ],
   entryComponents: [AppComponent,CabinDialogComponent, AssignBeddingDialogComponent ],
-  declarations: [AppComponent, StepDeparturesComponent, PromoBadgeComponent, DepartureMonthComponent, DepartureSlotComponent, StepTripDetailsComponent, PromotionSelectionComponent, CabinSelectionComponent, AddOnSelectionComponent, StepPassengerDetailsComponent, PassengerDetailsFormComponent, CabinDialogComponent, AssignBeddingDialogComponent, CarouselComponent, GridComponent, StyleComponent],
+  declarations: [AppComponent, StepDeparturesComponent, PromoBadgeComponent, DepartureMonthComponent, DepartureSlotComponent, StepTripDetailsComponent, PromotionSelectionComponent, CabinSelectionComponent, AddOnSelectionComponent, StepPassengerDetailsComponent, PassengerDetailsFormComponent, CabinDialogComponent, AssignBeddingDialogComponent, CarouselComponent, GridComponent, StyleComponent, TestComponent, CellComponent, BreakpointDirective],
   bootstrap: [AppComponent],
   providers: []
   
