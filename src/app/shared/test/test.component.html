@@ -1,4 +1,25 @@
-<grid cols="xs:5" rows="3" gap="0.5" debug>
+<button (click)="toggle = !toggle">toggle</button>
+<grid *ngIf="toggle" cols="5" rows="xs:3, sm:3, md:3, lg:3, xl:3" gap="0.5" debug>
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+  
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+  <cell></cell>
+</grid>
+
+<grid cols="3" rows="xs:3, sm:3, md:3, lg:3, xl:3" gap="0.5" debug>
   <cell></cell>
   <cell></cell>
   <cell></cell>

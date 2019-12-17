@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, OnChanges, Renderer2, OnDestroy } from '@angular/core';
-import { StyleComponent } from '../style/style.component';
-import { IfStmt, CompileStylesheetMetadata } from '@angular/compiler';
-import { SafeHtml } from '@angular/platform-browser';
+import { Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'grid',
@@ -10,8 +8,6 @@ import { SafeHtml } from '@angular/platform-browser';
 })
 export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
-  breakpoints = [{ xl: "min-width: 1200px" }, { lg: "min-width: 992px" }, { md: "min-width: 768px" }, { sm: "min-width: 544px" }, { xs: "min-width: 0em" },]
-
   @Input('cols') cols: any;
   staticCols: number;
   responsiveCols: object;
@@ -19,22 +15,22 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   @Input('rows') rows: any;
   staticRows: number;
   responsiveRows: object;
-  
+
   @Input('gap') gap: any;
   staticGap: number;
   responsiveGap: object;
 
+  id: string;
   styleTag: Node;
 
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private element: ElementRef) { }
 
   ngOnInit() {
 
   }
 
   ngOnChanges() {
-    console.log('changes');
     if (this.cols || this.rows) {
       this.getInputValue(this.cols, 'staticCols', 'responsiveCols');
       this.getInputValue(this.rows, 'staticRows', 'responsiveRows');
@@ -47,7 +43,7 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   }
 
   ngOnDestroy(): void {
-    this.styleTag?this.renderer.removeChild(window.document.head, this.styleTag):null;
+    this.styleTag ? this.renderer.removeChild(window.document.head, this.styleTag) : null;
   }
 
   getInputValue(value, variableName, repsonsiveVariableName) {
@@ -62,35 +58,39 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   }
 
   createStylesheet() {
-    this.styleTag?this.renderer.removeChild(window.document.head, this.styleTag):null;
+
+    this.styleTag ? this.renderer.removeChild(window.document.head, this.styleTag) : null;
+    this.id ? this.renderer.removeAttribute(this.element.nativeElement, 'id', this.id) : null;
+
+    this.id = 'grid-' + Math.random().toString(36).substring(2, 8);
+    this.renderer.setAttribute(this.element.nativeElement, 'id', this.id);
+
     let tag = this.renderer.createElement('style');
-    let hostname = '[' + tag.attributes[0].name.replace("content", "host") + ']';
 
     let stylesheet = '';
     if (this.staticCols || this.staticRows || this.staticGap) {
       let columns = this.staticCols ? ' 1fr '.repeat(this.staticCols) : null;
       let rows = this.staticRows ? ' 1fr '.repeat(this.staticRows) : null;
-      let gap = this.staticGap ? this.staticGap + 'rem': null;
+      let gap = this.staticGap ? this.staticGap + 'rem' : null;
       stylesheet =
-        ` ${hostname} {
+        ` #${this.id} {
         ${columns ? 'grid-template-columns:' + columns + ';' + '-ms-grid-colums' + columns + ';' : ''}
         ${rows ? 'grid-template-rows:' + rows + ';' + '-ms-grid-rows' + rows + ';' : ''}
-        ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - '+ gap +');'  : ''}
+        ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - ' + gap + ');' : ''}
           }`;
     }
     if (this.responsiveCols || this.responsiveRows || this.responsiveGap) {
-      this.breakpoints.forEach(bp => {
-        let columns = this.responsiveCols ? ' 1fr '.repeat(this.responsiveCols[Object.keys(bp)[0]]) : null;
-        let rows = this.responsiveRows ? ' 1fr '.repeat(this.responsiveRows[Object.keys(bp)[0]]) : null;
-        let gap = this.responsiveGap ? this.responsiveGap[Object.keys(bp)[0]]  + 'rem': null;
+      ['xs', 'sm', 'md', 'lg', 'xl'].forEach(bp => {
+        let columns = this.responsiveCols ? ' 1fr '.repeat(this.responsiveCols[bp]) : null;
+        let rows = this.responsiveRows ? ' 1fr '.repeat(this.responsiveRows[bp]) : null;
+        let gap = this.responsiveGap ? this.responsiveGap[this.responsiveGap[bp]] + 'rem' : null;
+
         stylesheet = stylesheet +
-          `@media only screen and (${bp[Object.keys(bp)[0]]}){
-              ${hostname} {
+          ` .${bp} #${this.id}  {
             ${columns ? 'grid-template-columns:' + columns + ';' + '-ms-grid-colums' + columns + ';' : ''}
             ${rows ? 'grid-template-rows:' + rows + ';' + '-ms-grid-rows' + rows + ';' : ''}
-            ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - '+ gap +');' : ''}
-              }
-          }`;
+            ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - ' + gap + ');' : ''}
+              }`;
       });
     }
     let textNode = this.renderer.createText(stylesheet);
