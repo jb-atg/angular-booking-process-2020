@@ -8,17 +8,29 @@ import { Breakpoints } from '@angular/cdk/layout';
 })
 export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
-  @Input('cols') cols: any;
-  staticCols: number;
-  responsiveCols: object;
+  breakpoints = { static: [], xs: [], sm: [], md: [], lg: [], xl: [] };
+  cssProperties = {
+    cols: [
+      { name: 'grid-template-columns', value: '', unit: 'fr' },
+      { name: '-ms-grid-columns', value: '', unit: 'fr' },],
+    rows: [
+      { name: 'grid-template-rows', value: '', unit: 'fr' },
+      { name: '-ms-grid-rows', value: '', unit: 'fr' }],
+    gap: [
+      { name: 'grid-gap', value: '', unit: 'rem' },
+      { name: 'padding', value: '', unit: 'rem' },
+      { name: 'width', value: '', unit: 'rem' }
+    ],
+  }
 
-  @Input('rows') rows: any;
-  staticRows: number;
-  responsiveRows: object;
+  @Input('cols') _cols: any;
+  cols: object;
 
-  @Input('gap') gap: any;
-  staticGap: number;
-  responsiveGap: object;
+  @Input('rows') _rows: any;
+  rows: object;
+
+  @Input('gap') _gap: any;
+  gap: object;
 
   id: string;
   styleTag: Node;
@@ -32,32 +44,107 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
 
   ngOnChanges() {
     if (this.cols || this.rows) {
-      this.getInputValue(this.cols, 'staticCols', 'responsiveCols');
-      this.getInputValue(this.rows, 'staticRows', 'responsiveRows');
-      this.getInputValue(this.gap, 'staticGap', 'responsiveGap');
-      this.createStylesheet();
+      this.getInputValue(this.cols, 'cols');
+      this.getInputValue(this.rows, 'rows');
+      this.getInputValue(this.gap, 'gap');
+  /*     this.createStylesheet(); */
     }
   }
 
   ngAfterViewInit(): void {
+    if (this.cols || this.rows) {
+      this.id = 'grid-' + Math.random().toString(36).substring(2, 8);
+      this.renderer.setAttribute(this.element.nativeElement, 'id', this.id);
+    }
   }
 
   ngOnDestroy(): void {
     this.styleTag ? this.renderer.removeChild(window.document.head, this.styleTag) : null;
   }
 
-  getInputValue(value, variableName, repsonsiveVariableName) {
-
+  getInputValue(value, propertyName) {
     if (value.length == 1 || typeof value == 'number' || value.includes(".")) {
-      this[variableName] = typeof value == 'string' ? Number(value) : value;
+      this[propertyName].static = typeof value == 'string' ? Number(value) : value;
     } else if (value === Object(value)) {
-      this[repsonsiveVariableName] = value;
+      this[propertyName] = value;
     } else if (typeof value == 'string') {
-      this[repsonsiveVariableName] = eval("(" + '{' + value + '}' + ")");
+      this[propertyName] = eval("(" + '{' + value + '}' + ")");
     }
   }
 
-  createStylesheet() {
+  setStyles(propertyName) {
+    Object.keys(this.breakpoints).forEach((bp, i) => {
+      if (this[propertyName][bp]) {
+        this.breakpoints[bp].push(this.cssProperties[propertyName]);
+        this.setCssValues(propertyName, bp);
+      }
+    });
+  }
+
+
+  setCssValues(propertyName, bp) {
+    this.breakpoints[bp].forEach((property, i) => {
+      property.value = this[propertyName][bp];
+    });
+  }
+
+
+
+
+
+
+
+
+  /*   abc = [
+      { name: '', value: '', repeated: true }
+    ] */
+  /* 
+    setBreakpoints(staticValue: number, responsiveValue: object, cssProperties: Array<any>) {
+      let value: string;
+      let id: string = ' #' + this.id;
+   
+      if (staticValue) {
+        value = id + '{' +
+          cssProperties.forEach((cssProperty, i) => {
+            if (cssProperty.value) {
+              return cssProperty.name + ':' + cssProperty.value + ';'
+            }
+          });
+        + '}';
+   
+      } else if (responsiveValue) {
+        value = '' + Object.keys(responsiveValue).forEach((bp, i) => {
+          let responsiveClassName: string = ' .' + bp;
+          return responsiveClassName + id + '{' +
+            cssProperties.forEach((cssProperty, i) => {
+              if (cssProperty.value) {
+                return cssProperty.name + ':' + cssProperty.value + ';'
+              }
+            });
+          + '}';
+        });
+   
+        return value
+   
+      }
+    }
+   */
+
+  createStylesheet1() {
+    // Remove previous style sheet
+    if (this.styleTag) { this.renderer.removeChild(window.document.head, this.styleTag); }
+
+    let tag = this.renderer.createElement('style');
+    let stylesheet = '';
+
+    let textNode = this.renderer.createText(stylesheet);
+    this.renderer.appendChild(tag, textNode);
+    this.styleTag = tag;
+    this.renderer.appendChild(window.document.head, this.styleTag);
+
+  }
+
+/*   createStylesheet() {
 
     this.styleTag ? this.renderer.removeChild(window.document.head, this.styleTag) : null;
     this.id ? this.renderer.removeAttribute(this.element.nativeElement, 'id', this.id) : null;
@@ -98,6 +185,6 @@ export class GridComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
     this.styleTag = tag;
     this.renderer.appendChild(window.document.head, this.styleTag);
 
-  }
+  } */
 
 }
