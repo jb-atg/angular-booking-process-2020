@@ -1,0 +1,96 @@
+// Color
+// primary accent warning
+// bg text border
+
+// Border 
+
+.border {
+    border: 1px solid;
+
+    &.border-left {
+        border-left: 1px solid;
+    }
+
+    &.border-right {
+        border-right: 1px solid;
+    }
+
+    &.border-top {
+        border-top: 1px solid;
+    }
+
+    &.border-bottom {
+        border-bottom: 1px solid;
+    }
+
+    &.rounded {
+        border-radius: .25rem;
+    }
+
+    &.rounded-circle {
+        border-radius: 50%;
+    }
+
+    &.rounded-left {
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+    }
+
+    &.rounded-right {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+    }
+
+    &.rounded-top {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+    }
+
+    &.rounded-bottom {
+        border-bottom-left-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+    }
+
+
+}
+
+.border-0 {
+    border: none;
+}
+
+.border-left-0 {
+    border-left: none;
+}
+
+.border-right-0 {
+    border-right: none;
+}
+
+.border-top-0 {
+    border-top: none;
+}
+
+.border-bottom-0 {
+    border-bottom: none;
+}
+
+
+// Display
+// needed ? hidden directive instead 
+
+// Position
+// needed ? usually there is a ton of other properties associated 
+// Text 
+
+// Visiblity / hidden
+// needed ? hidden directive instead 
+
+// width
+
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    height: 50%;
+}

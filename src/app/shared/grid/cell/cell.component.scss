@@ -1,3 +1,7 @@
 :host-context([debug]) {
     background:coral;
 }
+
+:host() {
+    padding:var(--gap);
+}
