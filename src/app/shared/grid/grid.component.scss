@@ -3,11 +3,77 @@
     display: -ms-grid;
     width: 100%;
     height: 100%;
+}
 
+:host():not(:first-of-type) {
+        padding-top:0!important;
+}
+
+:host-context(.xs) {
     &:not([cols]):not([rows]):not([gap]) {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        --gap: .25rem; 
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr;
-        -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        -ms-grid-columns: 1fr 1fr 1fr 1fr;
         -ms-grid-rows: 1fr;
+        grid-gap:var(--gap);
+        padding:var(--gap);
+        width: calc(100% - (var(--gap) * 2));
+        height: calc(100% - (var(--gap) * 2));
+    }
+}
+
+:host-context(.sm) {
+    &:not([cols]):not([rows]):not([gap]) {
+        --gap: .25rem; 
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        -ms-grid-columns: 1fr 1fr 1fr 1fr;
+        -ms-grid-rows: 1fr;
+        grid-gap:var(--gap);
+        padding:var(--gap);
+        width: calc(100% - (var(--gap) * 2));
+        height: calc(100% - (var(--gap) * 2));
+    }
+}
+
+:host-context(.md) {
+    &:not([cols]):not([rows]):not([gap]) {
+        --gap: .5rem; 
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        -ms-grid-rows: 1fr;
+        grid-gap:var(--gap);
+        padding:var(--gap);
+        width: calc(100% - (var(--gap) * 2));
+        height: calc(100% - (var(--gap) * 2));
+    }
+}
+
+:host-context(.lg) {
+    &:not([cols]):not([rows]):not([gap]) {
+        --gap: .75rem; 
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        -ms-grid-rows: 1fr;
+        grid-gap:var(--gap);
+        padding:var(--gap);
+        width: calc(100% - (var(--gap) * 2));
+        height: calc(100% - (var(--gap) * 2));
+    }
+}
+:host-context(.xl) {
+    &:not([cols]):not([rows]):not([gap]) {
+        --gap: 1rem; 
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        -ms-grid-rows: 1fr;
+        grid-gap:var(--gap);
+        padding:var(--gap);
+        width: calc(100% - (var(--gap) * 2));
+        height: calc(100% - (var(--gap) * 2));
     }
 }

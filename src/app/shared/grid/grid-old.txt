@@ -1,0 +1,123 @@
+  /*   abc = [
+      { name: '', value: '', repeated: true }
+    ] */
+  /* 
+    setBreakpoints(staticValue: number, responsiveValue: object, cssProperties: Array<any>) {
+      let value: string;
+      let id: string = ' #' + this.id;
+   
+      if (staticValue) {
+        value = id + '{' +
+          cssProperties.forEach((cssProperty, i) => {
+            if (cssProperty.value) {
+              return cssProperty.name + ':' + cssProperty.value + ';'
+            }
+          });
+        + '}';
+   
+      } else if (responsiveValue) {
+        value = '' + Object.keys(responsiveValue).forEach((bp, i) => {
+          let responsiveClassName: string = ' .' + bp;
+          return responsiveClassName + id + '{' +
+            cssProperties.forEach((cssProperty, i) => {
+              if (cssProperty.value) {
+                return cssProperty.name + ':' + cssProperty.value + ';'
+              }
+            });
+          + '}';
+        });
+   
+        return value
+   
+      }
+    }
+   */
+  /* 
+    createStylesheet1() {
+      // Remove previous style sheet
+      if (this.styleTag) { this.renderer.removeChild(window.document.head, this.styleTag); }
+  
+      let tag = this.renderer.createElement('style');
+      let stylesheet = '';
+  
+      let textNode = this.renderer.createText(stylesheet);
+      this.renderer.appendChild(tag, textNode);
+      this.styleTag = tag;
+      this.renderer.appendChild(window.document.head, this.styleTag);
+  
+    } */
+
+  /*   createStylesheet() {
+  
+      this.styleTag ? this.renderer.removeChild(window.document.head, this.styleTag) : null;
+      this.id ? this.renderer.removeAttribute(this.element.nativeElement, 'id', this.id) : null;
+  
+      this.id = 'grid-' + Math.random().toString(36).substring(2, 8);
+      this.renderer.setAttribute(this.element.nativeElement, 'id', this.id);
+  
+      let tag = this.renderer.createElement('style');
+  
+      let stylesheet = '';
+      if (this.staticCols || this.staticRows || this.staticGap) {
+        let columns = this.staticCols ? ' 1fr '.repeat(this.staticCols) : null;
+        let rows = this.staticRows ? ' 1fr '.repeat(this.staticRows) : null;
+        let gap = this.staticGap ? this.staticGap + 'rem' : null;
+        stylesheet =
+          ` #${this.id} {
+          ${columns ? 'grid-template-columns:' + columns + ';' + '-ms-grid-colums' + columns + ';' : ''}
+          ${rows ? 'grid-template-rows:' + rows + ';' + '-ms-grid-rows' + rows + ';' : ''}
+          ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - ' + gap + ');' : ''}
+            }`;
+      }
+      if (this.responsiveCols || this.responsiveRows || this.responsiveGap) {
+        ['xs', 'sm', 'md', 'lg', 'xl'].forEach(bp => {
+          let columns = this.responsiveCols ? ' 1fr '.repeat(this.responsiveCols[bp]) : null;
+          let rows = this.responsiveRows ? ' 1fr '.repeat(this.responsiveRows[bp]) : null;
+          let gap = this.responsiveGap ? this.responsiveGap[this.responsiveGap[bp]] + 'rem' : null;
+  
+          stylesheet = stylesheet +
+            ` .${bp} #${this.id}  {
+              ${columns ? 'grid-template-columns:' + columns + ';' + '-ms-grid-colums' + columns + ';' : ''}
+              ${rows ? 'grid-template-rows:' + rows + ';' + '-ms-grid-rows' + rows + ';' : ''}
+              ${gap ? 'grid-gap:' + gap + ';' + 'padding:' + gap + ';' + 'width: calc(100% - ' + gap + ' - ' + gap + ');' : ''}
+                }`;
+        });
+      }
+      let textNode = this.renderer.createText(stylesheet);
+      this.renderer.appendChild(tag, textNode);
+      this.styleTag = tag;
+      this.renderer.appendChild(window.document.head, this.styleTag);
+  
+    } */
+  /*
+        this.breakpoints[bp] = {
+          cols: [
+            { name: 'grid-template-columns', value: ' 1fr '.repeat(this.cols[bp]) },
+            { name: '-ms-grid-columns', value: ' 1fr '.repeat(this.cols[bp]) }],
+          rows: [
+            { name: 'grid-template-rows', value: ' 1fr '.repeat(this.rows[bp]) },
+            { name: '-ms-grid-rows', value: ' 1fr '.repeat(this.rows[bp]) }],
+          gap: [
+            { name: 'grid-gap', value: this.gap[bp] + 'rem' },
+            { name: 'padding', value: this.gap[bp] + 'rem' },
+            { name: 'width', value: this.gap[bp] + 'rem' }
+          ]
+        }
+  
+  */
+
+
+  /*  getInputValue(value, propertyName) {
+     if (value) {
+       if (value.length == 1 || typeof value == 'number' || value.includes(".")) {
+         let staticValue = typeof value == 'string' ? Number(value) : value;
+         this[propertyName] = { xs: staticValue, sm: staticValue, md: staticValue, lg: staticValue, xl: staticValue };
+       } else if (value === Object(value)) {
+         this[propertyName] = value;
+       } else if (typeof value == 'string') {
+         this[propertyName] = eval("(" + '{' + value + '}' + ")");
+       }
+     } else {
+       this[propertyName] = { xs: 0, sm: 0, md: 0, lg: 0, xl: 0 };
+     }
+   } */
