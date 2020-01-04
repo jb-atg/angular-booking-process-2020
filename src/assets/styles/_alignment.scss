@@ -1,7 +1,145 @@
-      /* extend stupid flexbox syntax nobody remembers to top middle bottom left center right for example <column innerAlign="left"> */
-      /*Horizontal Content Alignment*/
+[inner-alignment] {
+  // use traditional flex values too
 
-      [innerAlign] {
+  // Flex Display
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+
+  // Flex Direction
+  &:not([inner-alignment*='vertical']),
+  &[inner-alignment*='horizontal'] {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+    &[inner-alignment*='reverse'] {
+      -webkit-flex-direction: row-reverse;
+      flex-direction: row-reverse;
+    }
+  }
+
+  &[inner-alignment*='vertical'] {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+    &[inner-alignment*='reverse'] {
+      -webkit-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+    }
+  }
+
+  // Flex Wrap
+  &[inner-alignment*='wrap'] {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    &[inner-alignment*='reverse'] {
+      -webkit-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+    }
+  }
+
+  // Place content for row direction 
+
+  &:not([inner-alignment*='vertical']),
+  &[inner-alignment*='horizontal'] {
+
+    &[inner-alignment*='left'],
+    &[inner-alignment*='x-start'] // best to use start/end for websites are both ltr & rtl
+
+      {
+      justify-content: flex-start;
+    }
+
+    &[inner-alignment*='center'] {
+      justify-content: center;
+    }
+
+    &[inner-alignment*='right'],
+    &[inner-alignment*='x-end'] {
+      justify-content: flex-end;
+    }
+
+    &[inner-alignment*='distribute-h'] {
+      justify-content: space-around;
+    }
+
+    &[inner-alignment*='space-between-h'] {
+      justify-content: space-between;
+    }
+
+    &[inner-alignment*='top'] {
+      align-items: flex-start;
+    }
+
+    &[inner-alignment*='middle'] {
+      align-items: center;
+    }
+
+    &[inner-alignment*='bottom'] {
+      align-items: flex-end;
+    }
+
+    &[inner-alignment*='stretch-v'] {
+      align-items: stretch;
+    }
+
+  }
+
+
+  // Place content for column direction 
+
+  &[inner-alignment*='vertical'] {
+
+    &[inner-alignment*='left'],
+    &[inner-alignment*='x-start'] {
+      align-items: flex-start;
+    }
+
+    &[inner-alignment*='center'] {
+      align-items: center;
+    }
+
+    &[inner-alignment*='right'],
+    &[inner-alignment*='x-end'] {
+      align-items: flex-end;
+    }
+
+    &[inner-alignment*='distribute-v'] {
+      justify-content: space-around;
+    }
+
+    &[inner-alignment*='space-between-v'] {
+      justify-content: space-between;
+    }
+
+    &[inner-alignment*='top'] {
+      justify-content: flex-start;
+    }
+
+    &[inner-alignment*='middle'] {
+      justify-content: center;
+    }
+
+    &[inner-alignment*='bottom'] {
+      justify-content: flex-end;
+    }
+
+    &[inner-alignment*='stretch-v'] {
+      justify-content: stretch;
+    }
+
+  }
+}
+
+
+// old
+
+
+/*Horizontal Content Alignment*/
+
+[innerAlign] {
 
   display: flex;
   display: -webkit-flex;
@@ -10,42 +148,43 @@
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-        
 
-      &[innerAlign*="left"] {
-         justify-content: flex-start;
-      }
 
-      &[innerAlign*="center"] {
-         justify-content: center;
-      }
+  &[innerAlign*="left"] {
+    justify-content: flex-start;
+  }
 
-      &[innerAlign*="right"] {
-          justify-content: flex-end;
-      }
+  &[innerAlign*="center"] {
+    justify-content: center;
+  }
 
-      &[innerAlign*="distributeH"] {
-           justify-content: space-around;
-      }
+  &[innerAlign*="right"] {
+    justify-content: flex-end;
+  }
 
-      &[innerAlign*="spaceBetween"] {
-         justify-content: space-between;
-      }
+  &[innerAlign*="distributeH"] {
+    justify-content: space-around;
+  }
 
-      /*Vertical Content Alignment*/
-      &[innerAlign*="top"] {
-       align-items: start;
-      }
+  &[innerAlign*="spaceBetween"] {
+    justify-content: space-between;
+  }
 
-      &[innerAlign*="middle"] {
-        align-items: center;
-      }
+  /*Vertical Content Alignment*/
 
-      &[innerAlign*="bottom"] {
-        align-items: end;
-      }
+  &[innerAlign*="top"] {
+    align-items: start;
+  }
 
-      &[innerAlign*="stretchV"] {
-        align-items: stretch;
-      }
-      }
+  &[innerAlign*="middle"] {
+    align-items: center;
+  }
+
+  &[innerAlign*="bottom"] {
+    align-items: end;
+  }
+
+  &[innerAlign*="stretchV"] {
+    align-items: stretch;
+  }
+}
