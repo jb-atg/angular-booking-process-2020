@@ -1,10 +1,10 @@
 <div class="scroll-content">
-	<div class=" filters mat-elevation-z2" innerAlign="spaceBetween middle">
-		<div innerAlign="center middle">
+	<div class=" filters mat-elevation-z2" inner-alignment="space-between-h middle">
+		<div inner-alignment="center middle">
 			<button mat-stroked-button class="mr-100" (click)="openCabinDialog()">View Cabins</button>
 		</div>
-		<div class="pl-100 pr-100" innerAlign="left middle">
-			<div class="filter-icon" innerAlign="center middle" (click)="logFilters()">
+		<div class="pl-100 pr-100" inner-alignment="left middle">
+			<div class="filter-icon" inner-alignment="center middle" (click)="logFilters()">
 				<i class="material-icons">filter_list_alt</i>
 				<span class="mat-subheading-1 pr-100">Filters</span>
 			</div>
@@ -34,10 +34,10 @@
 
 			<mat-menu #beddingMenu="matMenu">
 				<div *ngFor="let beddingOption of filters.bedding.options; let i = index;" mat-menu-item
-					(click)="menuItemClick($event,i)" innerAlign="spaceBetween middle" class="number-picker-menu-item"
+					(click)="menuItemClick($event,i)" inner-alignment="space-between-h middle" class="number-picker-menu-item"
 					[ngStyle]="{'width.px': menuWidth }">
 					<span class="number-picker-label">{{beddingOption.label}}</span>
-					<div innerAlign="spaceBetween middle">
+					<div inner-alignment="space-between-h middle">
 						<button mat-icon-button (click)="menuItemClick($event,i, 'decrement')">
                 <i class="material-icons">remove_circle_outline</i>
             </button>
@@ -75,7 +75,7 @@
 
 	</div>
 
-	<div class="info-bar" innerAlign="spaceBetween middle">
+	<div class="info-bar" inner-alignment="space-between-h middle">
 		<div class="mat-title pl-100 pt-100 pb-100">Showing results for {{filters.bedding.totalPaxQuantity}} passengers
 			sharing {{filters.bedding.beddingDisplayValue}}</div>
 	</div>

@@ -1,8 +1,8 @@
 <div class="tile" (mousedown)="!departure.active ? activate(): undefined"
 	[class.active]="departure.active" [class.limited]="departure.month == 1 && departure.index == 0">
 	<div class="w-100">
-		<div innerAlign="spaceBetween top">
-			<div innerAlign="left middle" class="mat-headline">
+		<div inner-alignment="space-between-h top">
+			<div inner-alignment="left middle" class="mat-headline">
 				{{departure.begin | date:'EEE dd'}}
 				<i class="material-icons">keyboard_arrow_right</i>
 				{{!departure.endsNextMonth ? (departure.end | date:'EEE dd') : (departure.end | date:'EEE dd LLL') }}
@@ -13,11 +13,11 @@
 
 		</div>
     <span *ngIf="departure.month == 1 && departure.index == 0" class="limited-text">*Limited Availability*</span>
-		<div class="tile-line pt-100 pb-100" innerAlign="left middle">
+		<div class="tile-line pt-100 pb-100" inner-alignment="left middle">
 			<span *ngIf="departure.promotions.length == 0" class="no-promotions">No Promotions Available</span>
 			<div class="promos" [class.active]="departure.active">
 				<div class="w-100 promo-title" *ngIf="departure.promotions.length > 0">Available Promotions</div>
-				<span *ngFor="let promo of departure.promotions; let i = index;" class="promo mr-100" innerAlign="left middle">
+				<span *ngFor="let promo of departure.promotions; let i = index;" class="promo mr-100" inner-alignment="left middle">
           <i *ngIf="departure.active" matTooltip="Applies to Categories: C, C+, D, D+ E " class="material-icons">info_outline</i>
           <span class="mat-body-2">{{promo.label}}</span></span>
 			</div>

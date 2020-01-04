@@ -5,10 +5,10 @@
 	<ng-container *ngFor="let promo of promotions; let even = even; let i = index;">
 		<div class="promo" drag-scroll-item>
 			<div class="tile" (mousedown)="activatePromo(i)" [class.active]="promo.active">
-				<div innerAlign="spaceBetween top" class="w-100">
+				<div inner-alignment="space-between-h top" class="w-100">
 					<div>
 						<span class="mat-headline">{{promo.label}}</span>
-						<div class="w-100 promo-title" innerAlign="left middle"><u>Terms &amp; Conditions</u></div>
+						<div class="w-100 promo-title" inner-alignment="left middle"><u>Terms &amp; Conditions</u></div>
 					</div>
 
 					<i *ngIf="!promo.active" class="material-icons md-36">check_box_outline_blank</i>

@@ -1,4 +1,4 @@
-<div innerAlign="left middle" class="w-100">
+<div inner-alignment="left middle" class="w-100">
 	<div>
 		<div class="mat-display-1">Cabin Category</div>
 		<div class="mat-body-1">Select a cabin category below</div>
@@ -11,7 +11,7 @@
 	<ng-container *ngFor="let cabin of cabins; let even = even; let i = index;">
 		<div class="promo" drag-scroll-item>
 			<div class="tile" (mousedown)="activateCabin(i)" [class.active]="cabin.active">
-				<div innerAlign="spaceBetween top" class="w-100">
+				<div inner-alignment="space-between-h top" class="w-100">
 					<div>
 						<span class="mat-headline">Cabin Category {{cabin.label}}</span>
 					</div>
