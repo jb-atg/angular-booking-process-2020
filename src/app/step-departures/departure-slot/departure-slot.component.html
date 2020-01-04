@@ -13,11 +13,11 @@
 
 		</div>
     <span *ngIf="departure.month == 1 && departure.index == 0" class="limited-text">*Limited Availability*</span>
-		<div class="tile-line pt-1 pb-1" innerAlign="left middle">
+		<div class="tile-line pt-100 pb-100" innerAlign="left middle">
 			<span *ngIf="departure.promotions.length == 0" class="no-promotions">No Promotions Available</span>
 			<div class="promos" [class.active]="departure.active">
 				<div class="w-100 promo-title" *ngIf="departure.promotions.length > 0">Available Promotions</div>
-				<span *ngFor="let promo of departure.promotions; let i = index;" class="promo mr-1" innerAlign="left middle">
+				<span *ngFor="let promo of departure.promotions; let i = index;" class="promo mr-100" innerAlign="left middle">
           <i *ngIf="departure.active" matTooltip="Applies to Categories: C, C+, D, D+ E " class="material-icons">info_outline</i>
           <span class="mat-body-2">{{promo.label}}</span></span>
 			</div>
@@ -29,7 +29,7 @@
   From {{departure.price | currency}} AUD pp
   </span>
 
-	<button (mousedown)="nextStep(matStepperNext)" class="select-button w-100 mt-1" matStepperNext [class.active]="departure.active"  mat-flat-button>Select Departure
+	<button (mousedown)="nextStep(matStepperNext)" class="select-button w-100 mt-100" matStepperNext [class.active]="departure.active"  mat-flat-button>Select Departure
     <i class="material-icons">navigate_next</i>
     </button>
 
@@ -40,8 +40,8 @@
 
 <!--
 
-        <span  *ngIf="departure.promotions.length == 0" class="mat-body-1 pr-1">No Promotions Available</span>
+        <span  *ngIf="departure.promotions.length == 0" class="mat-body-1 pr-100">No Promotions Available</span>
 			<ng-marquee *ngIf="departure.promotions.length > 0" #marquee [class.active]="mark.offsetWidth > 300 && departure.active">
-				<mark><div #mark><span *ngFor="let promo of departure.promotions; let i = index;" class="mat-body-1 pr-1">{{promo.label}}</span></div></mark>
+				<mark><div #mark><span *ngFor="let promo of departure.promotions; let i = index;" class="mat-body-1 pr-100">{{promo.label}}</span></div></mark>
 			</ng-marquee>
  -->
