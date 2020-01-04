@@ -1,6 +1,45 @@
 // Color
-// primary accent warning
-// bg text border
+// primary accent warning --warn-color --accent-color --primary-color
+
+.bg-primary {
+    background-color: var(--primary-color);
+    color: var(--text-primary-color);
+}
+
+.bg-accent {
+    background-color: var(--accent-color);
+    color: var(--text-accent-color);
+}
+
+.bg-warn {
+    background-color: var(--warn-color);
+    color: var(--text-warn-color);
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.text-warn {
+    color: var(--warn-color);
+}
+
+.border-primary {
+    border-color: var(--primary-color);
+}
+
+.border-accent {
+    border-color: var(--accent-color);
+}
+
+.border-warn {
+    border-color: var(--warn-color);
+}
+
 
 // Border 
 
