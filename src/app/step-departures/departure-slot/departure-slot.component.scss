@@ -17,8 +17,8 @@ position:relative;
 display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: start;
-    align-content: start;
+    align-items:flex-start;
+    align-content:flex-start;
 
   &.active {
      max-width:320px;
