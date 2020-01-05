@@ -6,21 +6,21 @@
 @import '~@angular/material/theming';
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
-
+//calc(112px * var(--main-bg-color)
      
 $fontConfig: (
-  display-4: mat-typography-level(112px, 112px, 700, 'Gilroy', -0.0134em),
-  display-3: mat-typography-level(56px, 56px, 700, 'Gilroy', -0.0089em),
-  display-2: mat-typography-level(45px, 48px, 700, 'Gilroy', 0.0000em),
-  display-1: mat-typography-level(34px, 40px, 700, 'Gilroy', 0.0074em),
-  headline: mat-typography-level(24px, 32px, 700, 'Gilroy', 0.0000em),
-  title: mat-typography-level(20px, 32px, 700, 'Maison Neue', 0.0075em),
-  subheading-2: mat-typography-level(16px, 28px, 700, 'Maison Neue', 0.0094em),
-  subheading-1: mat-typography-level(15px, 24px, 700, 'Maison Neue', 0.0067em),
-  body-2: mat-typography-level(14px, 24px, 400, 'Maison Neue', 0.0179em),
-  body-1: mat-typography-level(14px, 20px, 400, 'Maison Neue', 0.0179em),
-  button: mat-typography-level(14px, 14px, 700, 'Gilroy', 0.0893em),
-  caption: mat-typography-level(12px, 20px, 400, 'Maison Neue', 0.0333em),
+  display-4: mat-typography-level(calc(112px * var(--heading-scale)), calc(112px * var(--heading-scale)), 700, 'Gilroy', -0.0134em),
+  display-3: mat-typography-level(calc(56px * var(--heading-scale)), calc(56px * var(--heading-scale)), 700, 'Gilroy', -0.0089em),
+  display-2: mat-typography-level(calc(45px * var(--heading-scale)), calc(48px * var(--heading-scale)), 700, 'Gilroy', 0.0000em),
+  display-1: mat-typography-level(calc(34px * var(--heading-scale)), calc(40px * var(--heading-scale)), 700, 'Gilroy', 0.0074em),
+  headline: mat-typography-level(calc(24px * var(--heading-scale)), calc(32px * var(--heading-scale)), 700, 'Gilroy', 0.0000em),
+  title: mat-typography-level(calc(20px * var(--heading-scale)), calc(32px * var(--heading-scale)), 700, 'Maison Neue', 0.0075em),
+  subheading-2: mat-typography-level(calc(16px * var(--heading-scale)), calc(28px * var(--heading-scale)), 700, 'Maison Neue', 0.0094em),
+  subheading-1: mat-typography-level(calc(15px * var(--heading-scale)), calc(24px * var(--heading-scale)), 700, 'Maison Neue', 0.0067em),
+  body-2: mat-typography-level(calc(14px * var(--body-scale)), calc(24px * var(--body-scale)), 400, 'Maison Neue', 0.0179em),
+  body-1: mat-typography-level(calc(14px * var(--body-scale)), calc(20px * var(--body-scale)), 400, 'Maison Neue', 0.0179em),
+  button: mat-typography-level(calc(14px * var(--body-scale)), calc(14px * var(--body-scale)), 700, 'Gilroy', 0.0893em),
+  caption: mat-typography-level(calc(12px * var(--body-scale)), calc(20px * var(--body-scale)), 400, 'Maison Neue', 0.0333em),
   input: mat-typography-level(inherit, 1.125, 400, 'Maison Neue', 1.5px)
 );
 

@@ -1,0 +1,30 @@
+body {
+    --heading-scale: 1;
+    --body-scale: 1;
+
+    &.xs{
+        --heading-scale: .8;
+    }
+
+
+    &.sm{
+        --heading-scale: .9;
+    }
+
+
+    &.md{
+        --heading-scale: 1;
+    }
+
+
+    &.lg{
+        --heading-scale: 1.1;
+    }
+
+
+    &.xl{
+        --heading-scale: 1.2;
+    }
+
+
+}
