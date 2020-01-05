@@ -7,23 +7,21 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 
-// Fonts
-
      
 $fontConfig: (
-  display-4: mat-typography-level(112px, 112px, 400,'gilroy', -0.0134em),
-  display-3: mat-typography-level(56px, 56px, 400, 'gilroy', -0.0089em),
-  display-2: mat-typography-level(45px, 48px, 400, 'gilroy', 0.0000em),
-  display-1: mat-typography-level(28px, 32px, 400, 'gilroy', 0.0074em),
-  headline: mat-typography-level(22px, 32px, 400, 'gilroy', 0.0000em),
-  title: mat-typography-level(20px, 32px, 500,  'maison_neuebold', 0.0075em),
-  subheading-2: mat-typography-level(18px, 28px, 400,  'maison_neuebold', 0.0094em),
-  subheading-1: mat-typography-level(16px, 24px, 500,  'maison_neuebold', 0.0067em),
-  body-2: mat-typography-level(16px, 24px, 500,  'maison_neuebold', 0.0179em),
-  body-1: mat-typography-level(14px, 20px, 400,  'maison_neuebold', 0.0179em),
-  button: mat-typography-level(16px, 20px, 500,  'maison_neuebold', 0.0893em),
-  caption: mat-typography-level(12px, 20px, 400,  'maison_neuebold', 0.0333em),
-  input: mat-typography-level(inherit, 1.125, 400,  'maison_neuebold', 1.5px)
+  display-4: mat-typography-level(112px, 112px, 700, 'Gilroy', -0.0134em),
+  display-3: mat-typography-level(56px, 56px, 700, 'Gilroy', -0.0089em),
+  display-2: mat-typography-level(45px, 48px, 700, 'Gilroy', 0.0000em),
+  display-1: mat-typography-level(34px, 40px, 700, 'Gilroy', 0.0074em),
+  headline: mat-typography-level(24px, 32px, 700, 'Gilroy', 0.0000em),
+  title: mat-typography-level(20px, 32px, 700, 'Maison Neue', 0.0075em),
+  subheading-2: mat-typography-level(16px, 28px, 700, 'Maison Neue', 0.0094em),
+  subheading-1: mat-typography-level(15px, 24px, 700, 'Maison Neue', 0.0067em),
+  body-2: mat-typography-level(14px, 24px, 400, 'Maison Neue', 0.0179em),
+  body-1: mat-typography-level(14px, 20px, 400, 'Maison Neue', 0.0179em),
+  button: mat-typography-level(14px, 14px, 700, 'Gilroy', 0.0893em),
+  caption: mat-typography-level(12px, 20px, 400, 'Maison Neue', 0.0333em),
+  input: mat-typography-level(inherit, 1.125, 400, 'Maison Neue', 1.5px)
 );
 
 // Foreground Elements
@@ -143,19 +141,19 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #2e3676;
-  --primary-lighter-color: #c0c3d6;
-  --primary-darker-color: #1d2259;
+  --primary-color: #122f60;
+  --primary-lighter-color: #b8c1cf;
+  --primary-darker-color: #0a1d44;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 
 $mat-primary: (
-  main: #2e3676,
-  lighter: #c0c3d6,
-  darker: #1d2259,
-  200: #2e3676, // For slide toggle,
+  main: #122f60,
+  lighter: #b8c1cf,
+  darker: #0a1d44,
+  200: #122f60, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
@@ -165,19 +163,19 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #fcb250;
-  --accent-lighter-color: #fee8cb;
-  --accent-darker-color: #fb9937;
+  --accent-color: #dce9ee;
+  --accent-lighter-color: #f5f8fa;
+  --accent-darker-color: #cedfe7;
   --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$dark-primary-text};
 }
 
 $mat-accent: (
-  main: #fcb250,
-  lighter: #fee8cb,
-  darker: #fb9937,
-  200: #fcb250, // For slide toggle,
+  main: #dce9ee,
+  lighter: #f5f8fa,
+  darker: #cedfe7,
+  200: #dce9ee, // For slide toggle,
   contrast : (
     main: $dark-primary-text,
     lighter: $dark-primary-text,
@@ -187,21 +185,21 @@ $mat-accent: (
 $theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
 body {
-  --warn-color: #dc3545;
-  --warn-lighter-color: #f5c2c7;
-  --warn-darker-color: #ce222e;
-  --text-warn-color: #{$light-primary-text};
+  --warn-color: #ff5858;
+  --warn-lighter-color: #ffcdcd;
+  --warn-darker-color: #ff3d3d;
+  --text-warn-color: #{$dark-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
 }
 
 $mat-warn: (
-  main: #dc3545,
-  lighter: #f5c2c7,
-  darker: #ce222e,
-  200: #dc3545, // For slide toggle,
+  main: #ff5858,
+  lighter: #ffcdcd,
+  darker: #ff3d3d,
+  200: #ff5858, // For slide toggle,
   contrast : (
-    main: $light-primary-text,
+    main: $dark-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
@@ -217,6 +215,23 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 .theme-alternate {
   @include angular-material-theme($altTheme);
 }
+
+
+// Specific component overrides, pieces that are not in line with the general theming
+
+// Handle buttons appropriately, with respect to line-height
+.mat-raised-button, .mat-stroked-button, .mat-flat-button {
+  padding: 0 1.15em;
+  margin: 0 .65em;
+  min-width: 3em;
+  line-height: 36.4px
+}
+
+.mat-standard-chip {
+  padding: .5em .85em;
+  min-height: 2.5em;
+}
+
 
 // theme overides 
 
@@ -282,20 +297,3 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
         }
       }
 
-
-
-// Specific component overrides, pieces that are not in line with the general theming
-
-// Handle buttons appropriately, with respect to line-height
-.mat-raised-button, .mat-stroked-button, .mat-flat-button {
-  padding: 0 1.15em;
-  margin: 0 .65em;
-  min-width: 3em;
-  line-height: 36.4px
-}
-
-
-.mat-standard-chip {
-  padding: .5em .85em;
-  min-height: 2.5em;
-}
